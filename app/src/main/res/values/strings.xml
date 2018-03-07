@@ -9,4 +9,7 @@
     <string name="recomentation">Esperamos que puedas obtener buenos resultados a partir de los ejercicios
                 aqui planteados.</string>
     <string name="name_project">Terapias miofuncionales</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
