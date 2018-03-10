@@ -1,7 +1,6 @@
 package com.mimel.odontokids;
 
 
-import android.media.Image;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -15,7 +14,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.MediaController;
-import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
 
@@ -52,7 +50,7 @@ public class PraxiasFragment extends Fragment {
         imageLogo = (ImageView) rootView.findViewById(R.id.imageView2);
 
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>( getActivity(), R.layout.list_item_praxias, nameTherapy );
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>( getActivity(), R.layout.list_item_therapy, nameTherapy );
         lv1.setAdapter(adapter);
 
         lv1.setOnItemClickListener(new AdapterView.OnItemClickListener() {

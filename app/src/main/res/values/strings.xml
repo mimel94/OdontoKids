@@ -13,5 +13,8 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_praxias">Terapias Praxias</string>
+    <string name="title_oral_respiration">Respiración oral</string>
+    <string name="title_deglucion">Deglución atipica</string>
+    <string name="title_muscle_tasty">Fortalecimiento de los musculos intraorales</string>
     <string name="selection_video">Selecciona el video a reproducir:</string>
 </resources>

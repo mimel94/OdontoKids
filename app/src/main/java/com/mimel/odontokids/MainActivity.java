@@ -91,11 +91,27 @@ public class MainActivity extends AppCompatActivity
             fragmentTransaction.commit();
 
         } else if (id == R.id.nav_terapias_respiracion) {
-            Toast.makeText(this,"Respiracion", Toast.LENGTH_SHORT).show();
+
+            OralRespirationFragment fragment = new OralRespirationFragment();
+            android.support.v4.app.FragmentTransaction fragmentTransaction =
+                    getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.fragment_container, fragment);
+            fragmentTransaction.commit();
+
         } else if (id == R.id.nav_terapias_deglucion_atipica) {
-            Toast.makeText(this,"Deglucion", Toast.LENGTH_SHORT).show();
+            AtipicaDeglucionFragment fragment = new AtipicaDeglucionFragment();
+            android.support.v4.app.FragmentTransaction fragmentTransaction =
+                    getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.fragment_container, fragment);
+            fragmentTransaction.commit();
+
         } else if (id == R.id.nav_terapias_fortalecimiento_musculos) {
-            Toast.makeText(this,"musculos", Toast.LENGTH_SHORT).show();
+            StrengthMusclekFragment fragment = new StrengthMusclekFragment();
+            android.support.v4.app.FragmentTransaction fragmentTransaction =
+                    getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.fragment_container, fragment);
+            fragmentTransaction.commit();
+
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
