@@ -9,19 +9,19 @@
             <menu>
                 <item
                     android:id="@+id/nav_terapias_praxias"
-                    android:icon="@drawable/ic_menu_camera"
+                    android:icon="@drawable/cepillo"
                     android:title="Praxias" />
                 <item
                     android:id="@+id/nav_terapias_respiracion"
-                    android:icon="@drawable/ic_menu_slideshow"
+                    android:icon="@drawable/hablar"
                     android:title="Respiración oral" />
                 <item
                     android:id="@+id/nav_terapias_deglucion_atipica"
-                    android:icon="@drawable/ic_menu_gallery"
+                    android:icon="@drawable/diente"
                     android:title="Deglucion atipica" />
                 <item
                     android:id="@+id/nav_terapias_fortalecimiento_musculos"
-                    android:icon="@drawable/ic_menu_manage"
+                    android:icon="@drawable/labios"
                     android:title="Fortalecimiento de musculos" />
             </menu>
         </item>
