@@ -37,4 +37,6 @@
     <string name="objetivos_de_atipica">1.Fortalecer músculos orofaciales y linguales para promover una adecuada alimentación\n
                                         2.Aumentar conciencia de propiocepción táctil y posición adecuada de la lengua.\n
                                         3.Corregir el hábito.</string>
+    <string name="my_points">Mis puntos</string>
+    <string name="reset_points">Reiniciar Puntos</string>
 </resources>

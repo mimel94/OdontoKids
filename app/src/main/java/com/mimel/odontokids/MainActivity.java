@@ -1,6 +1,8 @@
 package com.mimel.odontokids;
 
+import android.content.ContentValues;
 import android.content.res.Configuration;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
@@ -31,6 +33,7 @@ import java.util.TreeMap;
 import Adapter.CustomExpandableListAdapter;
 import Helper.FragmentNavigationManager;
 import Interface.NavigationManager;
+import utilidades.Utilidades;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -54,7 +57,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         logoVolver = (ImageView)findViewById(R.id.imageView);
+        ConexionSqlHelper conn = new ConexionSqlHelper(this, "bd_puntos", null,1);
 
+        createPoint();
         mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
         mActivityTytle = getTitle().toString();
         expandableListView = (ExpandableListView) findViewById(R.id.navList);
@@ -258,11 +263,35 @@ public class MainActivity extends AppCompatActivity {
             fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commit();
         }
+        if (id == R.id.points) {
+            AboutUsFragment fragment = new AboutUsFragment();
+            android.support.v4.app.FragmentTransaction fragmentTransaction =
+                    getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.fragment_container, fragment);
+            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.commit();
+        }
+
         if (mDraweToggle.onOptionsItemSelected(item)){
             return true;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+    private void createPoint(){
+        ConexionSqlHelper conn = new ConexionSqlHelper(this, "bd_puntos", null,1);
+
+        SQLiteDatabase db = conn.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        int valor = 0;
+        values.put(Utilidades.CAMPO_ID,1);
+        values.put(Utilidades.CAMPO_ID,valor);
+
+        Long idResultante = db.insert(Utilidades.TABLA_PUNTO, Utilidades.CAMPO_ID, values);
+
+        Toast.makeText(this, "ID registro: "+idResultante, Toast.LENGTH_SHORT).show();
+        db.close();
+
     }
     /*
     @SuppressWarnings("StatementWithEmptyBody")

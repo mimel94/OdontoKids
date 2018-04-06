@@ -1,6 +1,8 @@
 package com.mimel.odontokids;
 
 
+import android.content.ContentValues;
+import android.database.sqlite.SQLiteDatabase;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Build;
@@ -19,7 +21,7 @@ import android.widget.MediaController;
 import android.widget.Toast;
 import android.widget.VideoView;
 
-
+import utilidades.Utilidades;
 
 
 /**
@@ -162,12 +164,12 @@ public class PraxiasFragment extends Fragment {
         videoView.setMediaController(mediaController);
         mediaController.setAnchorView(videoView);
 
-
-
-
-
-
-
+        videoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mediaPlayer) {
+                Toast.makeText(getActivity(),"Se completo",Toast.LENGTH_SHORT).show();
+            }
+        });
 
 
         // Inflate the layout for this fragment
@@ -176,5 +178,7 @@ public class PraxiasFragment extends Fragment {
 
 
     }
+
+
 
 }
