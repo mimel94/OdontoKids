@@ -12,7 +12,7 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_praxias">Terapias Praxias</string>
+    <string name="title_praxias">Succión</string>
     <string name="title_oral_respiration">Respiración oral</string>
     <string name="title_deglucion">Deglución atipica</string>
     <string name="title_muscle_tasty">Fortalecimiento de los musculos intraorales</string>
@@ -24,6 +24,17 @@
     <string name="student_1">Kenverly Alejandra Gutiérrez Tovar</string>
     <string name="student_2">Gabriela Escandón Salas</string>
     <string name="student_3">Luisa Alejandra Rodríguez Hernández</string>
-    <string name="open">Abierto</string>
-    <string name="close">Cerrado</string>
+    <string name="objetivos">Objetivos</string>
+    <string name="objetivos_succion">1.Concientizar al paciente de la correcta postura de los labios en reposo.
+                                    \n2.Fortalecer y tonificar los músculos orofaciales</string>
+    <string name="objetivos_oral">1.Concienticar al paciente del hábito y de consecuencias.\n
+                                  2.Enseñar a respirar.\n
+                                  3.Fortalecer el músculo del diafragma por ende la capacidad pulmonar.\n
+                                  4.Mejorar la tonicidad de los labios.\n
+                                  5.Mejorar la posicion de la lengua y llevarla a la posición adecuada en reposo.\n
+                                  6.Promover el selle labial.\n
+                                  7.Eliminar el hábito de la respiración por la boca</string>
+    <string name="objetivos_de_atipica">1.Fortalecer músculos orofaciales y linguales para promover una adecuada alimentación\n
+                                        2.Aumentar conciencia de propiocepción táctil y posición adecuada de la lengua.\n
+                                        3.Corregir el hábito.</string>
 </resources>

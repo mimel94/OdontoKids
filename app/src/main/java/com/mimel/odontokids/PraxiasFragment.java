@@ -1,6 +1,7 @@
 package com.mimel.odontokids;
 
 
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.MediaController;
@@ -33,12 +35,14 @@ public class PraxiasFragment extends Fragment {
     private ListView lv1;
     private VideoView videoView;
     private ImageView imageLogo;
+    private ImageButton soundButon;
+    private MediaPlayer mp;
 
 
-    private String nameTherapy [] = {"Lapiz","Arequipe","Froot","Cuchara","Pitillo","boton","Lengua",
-                                    "Lengua a mejillas","Hacer beso","Morder","Vibrar labios","Cauchito",
-                                    "Dulce","AOI","Mover labios","Tarjeta","Inflar bomba","Lalala!",
-                                    "Caballo","Circulos con la lengua"};
+    private String nameTherapy [] = {"1) Lapiz","2) Arequipe","3) Froot","4) Cuchara","5) Pitillo","6) boton"};
+            /*,"Morder","Lengua","Lengua a mejillas","Hacer beso","Vibrar labios","Cauchito",
+            "Dulce","AOI","Mover labios","Tarjeta","Inflar bomba","Lalala!",
+            "Caballo","Circulos con la lengua"*/
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -48,6 +52,14 @@ public class PraxiasFragment extends Fragment {
         lv1 = (ListView)  rootView.findViewById(R.id.listPraxias);
         videoView = (VideoView) rootView.findViewById(R.id.videoView);
         imageLogo = (ImageView) rootView.findViewById(R.id.imageView2);
+        soundButon = (ImageButton) rootView.findViewById(R.id.objetivoSound);
+        mp = MediaPlayer.create(getActivity(), R.raw.succion);
+        soundButon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mp.start();
+            }
+        });
 
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>( getActivity(), R.layout.list_item_therapy, nameTherapy );
@@ -89,34 +101,6 @@ public class PraxiasFragment extends Fragment {
                     videoView.setBackground(null);
                 }else if (i == 5){
                     String videoPath = "android.resource://"+getActivity().getPackageName() + "/" + R.raw.boton;
-                    Uri uri = Uri.parse(videoPath);
-                    videoView.setVideoURI(uri);
-                    videoView.setBackground(null);
-                }
-                else if (i == 6){
-                    String videoPath = "android.resource://"+getActivity().getPackageName() + "/" + R.raw.lenaguaanarizyluegoabarbilla;
-                    Uri uri = Uri.parse(videoPath);
-                    videoView.setVideoURI(uri);
-                    videoView.setBackground(null);
-                }else if (i == 7){
-                    String videoPath = "android.resource://"+getActivity().getPackageName() + "/" + R.raw.lenguaenmejillas;
-                    Uri uri = Uri.parse(videoPath);
-                    videoView.setVideoURI(uri);
-                    videoView.setBackground(null);
-                }
-                else if (i == 8){
-                    String videoPath = "android.resource://"+getActivity().getPackageName() + "/" + R.raw.hacerbeso;
-                    Uri uri = Uri.parse(videoPath);
-                    videoView.setVideoURI(uri);
-                    videoView.setBackground(null);
-                }
-                else if (i == 9){
-                    String videoPath = "android.resource://"+getActivity().getPackageName() + "/" + R.raw.morder;
-                    Uri uri = Uri.parse(videoPath);
-                    videoView.setVideoURI(uri);
-                    videoView.setBackground(null);
-                }else if (i == 10){
-                    String videoPath = "android.resource://"+getActivity().getPackageName() + "/" + R.raw.vibrarlabios;
                     Uri uri = Uri.parse(videoPath);
                     videoView.setVideoURI(uri);
                     videoView.setBackground(null);
