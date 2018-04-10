@@ -2,6 +2,7 @@ package com.mimel.odontokids;
 
 import android.content.ContentValues;
 import android.content.res.Configuration;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.PersistableBundle;
@@ -51,15 +52,19 @@ public class MainActivity extends AppCompatActivity {
     private List<String> lstTitle;
     private Map<String, List<String>> lstChild;
     private NavigationManager navigationManager;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         logoVolver = (ImageView)findViewById(R.id.imageView);
-        ConexionSqlHelper conn = new ConexionSqlHelper(this, "bd_puntos", null,1);
 
-        createPoint();
+
+        if(consultar() == false){
+            createPoint();
+        }
+
+
+
         mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
         mActivityTytle = getTitle().toString();
         expandableListView = (ExpandableListView) findViewById(R.id.navList);
@@ -104,6 +109,30 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setTitle(mActivityTytle);
+
+    }
+
+    private boolean consultar() {
+        ConexionSqlHelper conn = new ConexionSqlHelper(this, "Points", null,1);
+        SQLiteDatabase db = conn.getReadableDatabase();
+
+        String id = "1";
+        String [] parametros = {id};
+        String [] campos = {Utilidades.CAMPO_PUNTOS};
+        try{
+            Cursor cursor = db.query(Utilidades.TABLA_PUNTO,campos, Utilidades.CAMPO_ID+"=?",parametros, null, null, null);
+            cursor.moveToFirst();
+            //Toast.makeText(this, "true"+cursor.getString(0), Toast.LENGTH_SHORT).show();
+            String misPuntos = cursor.getString(0);
+            cursor.close();
+            return true;
+        }catch (Exception e){
+            //Toast.makeText(this, "false", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "\"Bienvenido a nuestra App\\na partir de este momentos tienes 0 puntos\\nEmpieza a \" +\n" +
+             //       "                            \"ver videos para sumar muchos!", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
 
     }
 
@@ -264,7 +293,7 @@ public class MainActivity extends AppCompatActivity {
             fragmentTransaction.commit();
         }
         if (id == R.id.points) {
-            AboutUsFragment fragment = new AboutUsFragment();
+            PoinsFragment fragment = new PoinsFragment();
             android.support.v4.app.FragmentTransaction fragmentTransaction =
                     getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.fragment_container, fragment);
@@ -278,18 +307,20 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
     private void createPoint(){
-        ConexionSqlHelper conn = new ConexionSqlHelper(this, "bd_puntos", null,1);
+        ConexionSqlHelper conn = new ConexionSqlHelper(this, "Points", null,1);
 
         SQLiteDatabase db = conn.getWritableDatabase();
         ContentValues values = new ContentValues();
+        int id = 1;
         int valor = 0;
-        values.put(Utilidades.CAMPO_ID,1);
-        values.put(Utilidades.CAMPO_ID,valor);
+        values.put(Utilidades.CAMPO_ID,String.valueOf(id));
+        values.put(Utilidades.CAMPO_PUNTOS,String.valueOf(valor));
 
         Long idResultante = db.insert(Utilidades.TABLA_PUNTO, Utilidades.CAMPO_ID, values);
 
-        Toast.makeText(this, "ID registro: "+idResultante, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "ID registro: "+idResultante, Toast.LENGTH_SHORT).show();
         db.close();
 
     }
