@@ -22,6 +22,7 @@ public class MainFragment extends Fragment {
 
     ImageView logoSonido;
     MediaPlayer mp;
+    ImageView imgSound;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -29,15 +30,39 @@ public class MainFragment extends Fragment {
         final View rootView = inflater.inflate(R.layout.fragment_main, container, false);
 
         logoSonido = (ImageView)rootView.findViewById(R.id.imageView3);
+        imgSound = (ImageView)rootView.findViewById(R.id.img_sound);
         mp = MediaPlayer.create(getActivity(), R.raw.introduccion);
         logoSonido.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mp.start();
+               playAndPauseSound();
+            }
+        });
+        imgSound.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                playAndPauseSound();
             }
         });
 
+
+
         return rootView;
+    }
+    public void playAndPauseSound(){
+        if(mp.isPlaying()){
+            mp.pause();
+            imgSound.setImageResource(R.drawable.ic_play_circle_filled_black_24dp);
+        }else {
+            mp.start();
+            imgSound.setImageResource(R.drawable.ic_pause_circle_filled_black_24dp);
+        }
+        mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mediaPlayer) {
+                imgSound.setImageResource(R.drawable.ic_play_circle_filled_black_24dp);
+            }
+        });
     }
 
 }
