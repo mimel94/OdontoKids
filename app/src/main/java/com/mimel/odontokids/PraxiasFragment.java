@@ -40,8 +40,7 @@ public class PraxiasFragment extends Fragment {
     private ListView lv1;
     private VideoView videoView;
     private ImageView imageLogo;
-    private ImageButton soundButon;
-    private MediaPlayer mp;
+
 
 
     private String nameTherapy [] = {"1) Lapiz","2) Arequipe","3) Froot","4) Cuchara","5) Pitillo","6) boton"};
@@ -57,14 +56,9 @@ public class PraxiasFragment extends Fragment {
         lv1 = (ListView)  rootView.findViewById(R.id.listPraxias);
         videoView = (VideoView) rootView.findViewById(R.id.videoView);
         imageLogo = (ImageView) rootView.findViewById(R.id.imageView2);
-        soundButon = (ImageButton) rootView.findViewById(R.id.objetivoSound);
-        mp = MediaPlayer.create(getActivity(), R.raw.succion);
-        soundButon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mp.start();
-            }
-        });
+        
+
+
 
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>( getActivity(), R.layout.list_item_therapy, nameTherapy );

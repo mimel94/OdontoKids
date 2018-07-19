@@ -46,6 +46,8 @@ public class MainActivity extends AppCompatActivity {
     private ActionBarDrawerToggle mDraweToggle;
     private String mActivityTytle;
     private String[] items;
+    private String[] subItems;
+
 
     private ExpandableListView expandableListView;
     private ExpandableListAdapter adapter;
@@ -163,7 +165,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
-                getSupportActionBar().setTitle("MENU");
+                getSupportActionBar().setTitle(mActivityTytle);
                 invalidateOptionsMenu();
             }
 
@@ -209,27 +211,41 @@ public class MainActivity extends AppCompatActivity {
                 getSupportActionBar().setTitle(selectItem);
 
                 if(items[0].equals(lstTitle.get(i))){
-                    PraxiasFragment fragment = new PraxiasFragment();
-                    android.support.v4.app.FragmentTransaction fragmentTransaction =
-                            getSupportFragmentManager().beginTransaction();
-                    fragmentTransaction.replace(R.id.fragment_container, fragment);
-                    fragmentTransaction.addToBackStack(null);
-                    fragmentTransaction.commit();
+                    if(subItems[0].equals(selectItem)){
+                        ObjectivesPraxiasFragment fragment = new ObjectivesPraxiasFragment();
+                        android.support.v4.app.FragmentTransaction fragmentTransaction =
+                                getSupportFragmentManager().beginTransaction();
+                        fragmentTransaction.replace(R.id.fragment_container, fragment);
+                        fragmentTransaction.addToBackStack(null);
+                        fragmentTransaction.commit();
+                    }else if(subItems[1].equals(selectItem)){
+                        PraxiasFragment fragment = new PraxiasFragment();
+                        android.support.v4.app.FragmentTransaction fragmentTransaction =
+                                getSupportFragmentManager().beginTransaction();
+                        fragmentTransaction.replace(R.id.fragment_container, fragment);
+                        fragmentTransaction.addToBackStack(null);
+                        fragmentTransaction.commit();
+                    }
+
+
                 }else if (items[1].equals(lstTitle.get(i))){
-                    OralRespirationFragment fragment = new OralRespirationFragment();
+                    Toast.makeText(getApplicationContext(), ""+selectItem+" + "+lstTitle.get(i), Toast.LENGTH_SHORT).show();
+
+                    /*OralRespirationFragment fragment = new OralRespirationFragment();
                     android.support.v4.app.FragmentTransaction fragmentTransaction =
                             getSupportFragmentManager().beginTransaction();
                     fragmentTransaction.replace(R.id.fragment_container, fragment);
                     fragmentTransaction.addToBackStack(null);
-                    fragmentTransaction.commit();
+                    fragmentTransaction.commit();*/
 
                 }else if(items[2].equals(lstTitle.get(i))){
-                    AtipicaDeglucionFragment fragment = new AtipicaDeglucionFragment();
+                    Toast.makeText(getApplicationContext(), ""+selectItem+" + "+lstTitle.get(i), Toast.LENGTH_SHORT).show();
+                   /* AtipicaDeglucionFragment fragment = new AtipicaDeglucionFragment();
                     android.support.v4.app.FragmentTransaction fragmentTransaction =
                             getSupportFragmentManager().beginTransaction();
                     fragmentTransaction.replace(R.id.fragment_container, fragment);
                     fragmentTransaction.addToBackStack(null);
-                    fragmentTransaction.commit();
+                    fragmentTransaction.commit();*/
                 }
                 else{
                     throw new IllegalArgumentException("No soportado");
@@ -243,20 +259,23 @@ public class MainActivity extends AppCompatActivity {
     private void genData() {
 
         List<String> title = Arrays.asList("Succión","Respiración oral","Deglución Atipica");
-        List<String> childItem = Arrays.asList("Digital","Interposición lingual","Interposición labial");
-        List<String> childItem2 = Arrays.asList("Ejercicios","Soplar pelota","Mas...");
-        List<String> childItem3 = Arrays.asList("Masaje con manos","Masajeador","Mas...");
+        List<String> childItem = Arrays.asList("Objetivos","Ejercicios","");
+        //List<String> childItem2 = Arrays.asList("Objetivos","Ejercicios","");
+        //List<String> childItem3 = Arrays.asList("Objetivos","Ejercicios","");
         lstChild = new TreeMap<>();
         lstChild.put(title.get(0),childItem);
-        lstChild.put(title.get(1),childItem2);
-        lstChild.put(title.get(2),childItem3);
+        lstChild.put(title.get(1),childItem);
+        lstChild.put(title.get(2),childItem);
 
         lstTitle = new ArrayList<>(lstChild.keySet());
 
     }
 
     private void initItems() {
-        items = new String[]{"Succión","Respiración oral","Deglución Atipica"};
+        items = new String[]{"Succión","Respiración oral","Deglución Atipica",};
+        subItems = new String[]{"Objetivos","Ejercicios"};
+
+
     }
 
     @Override
