@@ -38,8 +38,7 @@ public class OralRespirationFragment extends Fragment {
     private ListView lv1;
     private VideoView videoView;
     private ImageView imageLogo;
-    private ImageButton soundButon;
-    private MediaPlayer mp;
+
 
 
 
@@ -57,14 +56,7 @@ public class OralRespirationFragment extends Fragment {
         lv1 = (ListView) rootView.findViewById(R.id.listPraxias);
         videoView = (VideoView) rootView.findViewById(R.id.videoView);
         imageLogo = (ImageView)rootView.findViewById(R.id.imageView2);
-        soundButon = (ImageButton) rootView.findViewById(R.id.objetivoSound);
-        mp = MediaPlayer.create(getActivity(), R.raw.oral);
-        soundButon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mp.start();
-            }
-        });
+
 
 
 

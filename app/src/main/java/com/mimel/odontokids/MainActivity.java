@@ -227,16 +227,26 @@ public class MainActivity extends AppCompatActivity {
                         fragmentTransaction.commit();
                     }
 
-
                 }else if (items[1].equals(lstTitle.get(i))){
-                    Toast.makeText(getApplicationContext(), ""+selectItem+" + "+lstTitle.get(i), Toast.LENGTH_SHORT).show();
 
-                    /*OralRespirationFragment fragment = new OralRespirationFragment();
-                    android.support.v4.app.FragmentTransaction fragmentTransaction =
-                            getSupportFragmentManager().beginTransaction();
-                    fragmentTransaction.replace(R.id.fragment_container, fragment);
-                    fragmentTransaction.addToBackStack(null);
-                    fragmentTransaction.commit();*/
+                    if(subItems[0].equals(selectItem)){
+                        ObjectivesOralRespirationFragment fragment = new ObjectivesOralRespirationFragment();
+                        android.support.v4.app.FragmentTransaction fragmentTransaction =
+                                getSupportFragmentManager().beginTransaction();
+                        fragmentTransaction.replace(R.id.fragment_container, fragment);
+                        fragmentTransaction.addToBackStack(null);
+                        fragmentTransaction.commit();
+
+                    }else if(subItems[1].equals(selectItem)){
+                        OralRespirationFragment fragment = new OralRespirationFragment();
+                        android.support.v4.app.FragmentTransaction fragmentTransaction =
+                                getSupportFragmentManager().beginTransaction();
+                        fragmentTransaction.replace(R.id.fragment_container, fragment);
+                        fragmentTransaction.addToBackStack(null);
+                        fragmentTransaction.commit();
+                    }
+
+
 
                 }else if(items[2].equals(lstTitle.get(i))){
                     Toast.makeText(getApplicationContext(), ""+selectItem+" + "+lstTitle.get(i), Toast.LENGTH_SHORT).show();

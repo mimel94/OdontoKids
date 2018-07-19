@@ -56,7 +56,7 @@ public class PraxiasFragment extends Fragment {
         lv1 = (ListView)  rootView.findViewById(R.id.listPraxias);
         videoView = (VideoView) rootView.findViewById(R.id.videoView);
         imageLogo = (ImageView) rootView.findViewById(R.id.imageView2);
-        
+
 
 
 

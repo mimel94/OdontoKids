@@ -28,13 +28,16 @@
     <string name="objetivos_succion">1) Sensibilizar al paciente sobre el cierre de los labios en reposo.
                                     \n\n2) Fortalecer y tonificar los músculos de la cara y de la boca.
                                     \n\n3) Corregir el hábito.</string>
-    <string name="objetivos_oral">1.Concienticar al paciente del hábito y de consecuencias.\n
-                                  2.Enseñar a respirar.\n
-                                  3.Fortalecer el músculo del diafragma por ende la capacidad pulmonar.\n
-                                  4.Mejorar la tonicidad de los labios.\n
-                                  5.Mejorar la posicion de la lengua y llevarla a la posición adecuada en reposo.\n
-                                  6.Promover el selle labial.\n
-                                  7.Eliminar el hábito de la respiración por la boca</string>
+    <string name="objetivos_oral">  1) Concientizar al paciente de los malos hábitos que presenta y de los resultados que estos pueden ocasionar en la boca, dientes, y músculos.
+                                    \n\n2) Corregir la manera como respira.
+                                    </string>
+    <string name="objetivos_oral1"> 3) Fortalecer los músculos de la respiración y por ende aumentar la capacidad de los pulmones para retener el máximo de aire.
+                                    \n\n4) Mejorar la tensión de los labios.
+                                    \n\n5) Mejorar la posición de la lengua durante el reposo.
+                                   </string>
+    <string name="objetivos_oral2">
+                                    6) Causar el cierre de los labios en reposo.
+                                    \n\n7) Eliminar el hábito de respirar por la boca.</string>
     <string name="objetivos_de_atipica">1.Fortalecer músculos orofaciales y linguales para promover una adecuada alimentación\n
                                         2.Aumentar conciencia de propiocepción táctil y posición adecuada de la lengua.\n
                                         3.Corregir el hábito.</string>
