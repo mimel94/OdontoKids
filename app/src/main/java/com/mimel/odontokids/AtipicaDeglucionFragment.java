@@ -39,8 +39,7 @@ public class AtipicaDeglucionFragment extends Fragment {
     private ListView lv1;
     private VideoView videoView;
     private ImageView imageLogo;
-    private ImageButton soundButon;
-    private MediaPlayer mp;
+
 
     private String nameTherapy [] = {"1)Masaje con manos","2)Masajeador","3)Cepillado de lengua","4)Cauchito",
             "5)Dulce","6)AOI","7)Mover labios","8)Inflar bomba","9)Tarjeta","10)Caballo","11)Lalala!",
@@ -55,14 +54,7 @@ public class AtipicaDeglucionFragment extends Fragment {
         lv1 = (ListView) rootView.findViewById(R.id.listPraxias);
         videoView = (VideoView) rootView.findViewById(R.id.videoView);
         imageLogo = (ImageView)rootView.findViewById(R.id.imageView2);
-        soundButon = (ImageButton) rootView.findViewById(R.id.objetivoSound);
-        mp = MediaPlayer.create(getActivity(), R.raw.deglucion);
-        soundButon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mp.start();
-            }
-        });
+
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), R.layout.list_item_therapy, nameTherapy );
         lv1.setAdapter(adapter);

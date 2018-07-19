@@ -38,9 +38,10 @@
     <string name="objetivos_oral2">
                                     6) Causar el cierre de los labios en reposo.
                                     \n\n7) Eliminar el hábito de respirar por la boca.</string>
-    <string name="objetivos_de_atipica">1.Fortalecer músculos orofaciales y linguales para promover una adecuada alimentación\n
-                                        2.Aumentar conciencia de propiocepción táctil y posición adecuada de la lengua.\n
-                                        3.Corregir el hábito.</string>
+    <string name="objetivos_de_atipica">1) Fortalecer los músculos de la boca, la lengua, el paladar y la cara; para promover una adecuada alimentación.
+                                        \n\n2) Promover el entendimiento acerca de la posición que debe ocupar la lengua dentro de la boca, y de la forma en como ésta se relaciona con los demás órganos (dientes, mejillas, labios).
+                                        </string>
+    <string name="objetivos_de_atipica1">3)Corregir el hábito.</string>
     <string name="my_points">Mis puntos</string>
     <string name="reset_points">Reiniciar Puntos</string>
 </resources>

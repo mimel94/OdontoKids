@@ -249,13 +249,23 @@ public class MainActivity extends AppCompatActivity {
 
 
                 }else if(items[2].equals(lstTitle.get(i))){
-                    Toast.makeText(getApplicationContext(), ""+selectItem+" + "+lstTitle.get(i), Toast.LENGTH_SHORT).show();
-                   /* AtipicaDeglucionFragment fragment = new AtipicaDeglucionFragment();
-                    android.support.v4.app.FragmentTransaction fragmentTransaction =
-                            getSupportFragmentManager().beginTransaction();
-                    fragmentTransaction.replace(R.id.fragment_container, fragment);
-                    fragmentTransaction.addToBackStack(null);
-                    fragmentTransaction.commit();*/
+                    if(subItems[0].equals(selectItem)){
+                        ObjectivesAtipicaDeglucionFragment fragment = new ObjectivesAtipicaDeglucionFragment();
+                        android.support.v4.app.FragmentTransaction fragmentTransaction =
+                                getSupportFragmentManager().beginTransaction();
+                        fragmentTransaction.replace(R.id.fragment_container, fragment);
+                        fragmentTransaction.addToBackStack(null);
+                        fragmentTransaction.commit();
+
+                    }else if(subItems[1].equals(selectItem)){
+                        AtipicaDeglucionFragment fragment = new AtipicaDeglucionFragment();
+                        android.support.v4.app.FragmentTransaction fragmentTransaction =
+                                getSupportFragmentManager().beginTransaction();
+                        fragmentTransaction.replace(R.id.fragment_container, fragment);
+                        fragmentTransaction.addToBackStack(null);
+                        fragmentTransaction.commit();
+                    }
+
                 }
                 else{
                     throw new IllegalArgumentException("No soportado");
