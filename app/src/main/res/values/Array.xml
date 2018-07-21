@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="videos_deglution_atipical">
+        <item>Elija una opción</item>
+        <item>1) Masaje con manos</item>
+        <item>2) Masajeador</item>
+        <item>3) Cepillado dental</item>
+        <item>4) Cauchito</item>
+        <item>5) Dulce</item>
+        <item>6) A-O-I</item>
+        <item>7) Mover labios</item>
+        <item>8) Inflar Bomba</item>
+        <item>9) Tarjeta</item>
+        <item>10) Caballo</item>
+        <item>11) La-La-La!</item>
+        <item>12) Círculos con la lengua</item>
+    </string-array>
+    <string-array name="videos_oral_respiration">
+        <item>Elija una opción</item>
+        <item>1) Velas</item>
+        <item>2) Cantar</item>
+        <item>3) Soplar la pelota</item>
+        <item>4) Morder</item>
+        <item>5) Lengua</item>
+        <item>6) Lengua a las mejillas</item>
+        <item>7) Mandar beso</item>
+        <item>8) Vibrar labios</item>
+    </string-array>
+    <string-array name="videos_praxias">
+        <item>Elija una opción</item>
+        <item>1) lápiz</item>
+        <item>2) Arequipe</item>
+        <item>3) Froot loops</item>
+        <item>4) Cuchara</item>
+        <item>5) Pitillo</item>
+        <item>6) Botón</item>
+    </string-array>
+</resources>
