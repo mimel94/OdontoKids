@@ -13,11 +13,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.MediaController;
-import android.widget.TextView;
+import android.widget.Spinner;
 import android.widget.Toast;
 import android.widget.VideoView;
 
@@ -35,7 +34,7 @@ public class OralRespirationFragment extends Fragment {
         // Required empty public constructor
     }
 
-    private ListView lv1;
+    private Spinner options;
     private VideoView videoView;
     private ImageView imageLogo;
 
@@ -53,58 +52,58 @@ public class OralRespirationFragment extends Fragment {
         // Inflate the layout for this fragment
 
         final View rootView = inflater.inflate(R.layout.fragment_oral_respiration, container, false);
-        lv1 = (ListView) rootView.findViewById(R.id.listPraxias);
+        options = (Spinner) rootView.findViewById(R.id.listPraxias);
         videoView = (VideoView) rootView.findViewById(R.id.videoView);
         imageLogo = (ImageView)rootView.findViewById(R.id.imageView2);
 
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(),R.array.videos_oral_respiration, android.R.layout.simple_spinner_dropdown_item);
+        options.setAdapter(adapter);
 
-
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>( getActivity(), R.layout.list_item_therapy, nameTherapy );
-        lv1.setAdapter(adapter);
-
-        lv1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        options.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 imageLogo.setVisibility(View.INVISIBLE);
                 videoView.setVisibility(View.VISIBLE);
-                if (i == 0){
+                if (i == 0) {
+                    imageLogo.setVisibility(View.VISIBLE);
+                    videoView.setVisibility(View.INVISIBLE);
+                }else if (i == 1){
                     String videoPath = "android.resource://"+getActivity().getPackageName() + "/" + R.raw.apagarvela;
                     Uri uri = Uri.parse(videoPath);
                     videoView.setVideoURI(uri);
 
-                }else if (i == 1){
+                }else if (i == 2){
                     String videoPath = "android.resource://"+getActivity().getPackageName() + "/" + R.raw.cantarconlabocacerrada;
                     Uri uri = Uri.parse(videoPath);
                     videoView.setVideoURI(uri);
-                }else if (i == 2){
+                }else if (i == 3){
                     String videoPath = "android.resource://"+getActivity().getPackageName() + "/" + R.raw.soplarpelota;
                     Uri uri = Uri.parse(videoPath);
                     videoView.setVideoURI(uri);
                 }
-                else if (i == 4){
+                else if (i == 5){
                     String videoPath = "android.resource://"+getActivity().getPackageName() + "/" + R.raw.lenaguaanarizyluegoabarbilla;
                     Uri uri = Uri.parse(videoPath);
                     videoView.setVideoURI(uri);
 
-                }else if (i == 5){
+                }else if (i == 6){
                     String videoPath = "android.resource://"+getActivity().getPackageName() + "/" + R.raw.lenguaenmejillas;
                     Uri uri = Uri.parse(videoPath);
                     videoView.setVideoURI(uri);
 
                 }
-                else if (i == 6){
+                else if (i == 7){
                     String videoPath = "android.resource://"+getActivity().getPackageName() + "/" + R.raw.hacerbeso;
                     Uri uri = Uri.parse(videoPath);
                     videoView.setVideoURI(uri);
 
                 }
-                else if (i == 3){
+                else if (i == 4){
                     String videoPath = "android.resource://"+getActivity().getPackageName() + "/" + R.raw.morder;
                     Uri uri = Uri.parse(videoPath);
                     videoView.setVideoURI(uri);
 
-                }else if (i == 7){
+                }else if (i == 8){
                     String videoPath = "android.resource://"+getActivity().getPackageName() + "/" + R.raw.vibrarlabios;
                     Uri uri = Uri.parse(videoPath);
                     videoView.setVideoURI(uri);
@@ -113,6 +112,11 @@ public class OralRespirationFragment extends Fragment {
                     Toast.makeText(getActivity(),"Que estraño esta opción no esta :O", Toast.LENGTH_SHORT).show();
                 }
                 videoView.start();
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
 
             }
         });
