@@ -1,9 +1,12 @@
 package com.mimel.odontokids;
 
 
+import android.app.Dialog;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
@@ -13,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.MediaController;
@@ -36,6 +40,8 @@ public class AtipicaDeglucionFragment extends Fragment {
     private Spinner options;
     private VideoView videoView;
     private ImageView imageLogo;
+    Dialog customDialog;
+    Button negativePopupBtn;
 
 
     private String nameTherapy [] = {"1)Masaje con manos","2)Masajeador","3)Cepillado de lengua","4)Cauchito",
@@ -51,6 +57,9 @@ public class AtipicaDeglucionFragment extends Fragment {
         options = (Spinner) rootView.findViewById(R.id.listPraxias);
         videoView = (VideoView) rootView.findViewById(R.id.videoView);
         imageLogo = (ImageView)rootView.findViewById(R.id.imageView2);
+        customDialog = new Dialog(getActivity());
+
+
 
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(),R.array.videos_deglution_atipical, android.R.layout.simple_spinner_dropdown_item);
@@ -66,60 +75,45 @@ public class AtipicaDeglucionFragment extends Fragment {
                     videoView.setVisibility(View.INVISIBLE);
                 }else if (i == 1){
                     String videoPath = "android.resource://"+getActivity().getPackageName() + "/" + R.raw.masajeconmanos;
-                    Uri uri = Uri.parse(videoPath);
-                    videoView.setVideoURI(uri);
-
-
+                    playVideo(videoPath);
                 }else if (i == 2){
                     String videoPath = "android.resource://"+getActivity().getPackageName() + "/" + R.raw.masajeador;
-                    Uri uri = Uri.parse(videoPath);
-                    videoView.setVideoURI(uri);
+                    playVideo(videoPath);
                 }else if (i == 3){
                     String videoPath = "android.resource://"+getActivity().getPackageName() + "/" + R.raw.cepilladoconlalengua;
-                    Uri uri = Uri.parse(videoPath);
-                    videoView.setVideoURI(uri);
-
+                    playVideo(videoPath);
                 }else if (i == 4){
                     String videoPath = "android.resource://"+getActivity().getPackageName() + "/" + R.raw.cauchito;
-                    Uri uri = Uri.parse(videoPath);
-                    videoView.setVideoURI(uri);
+                    showNegativePopup(videoPath);
                 }else if (i == 5){
                     String videoPath = "android.resource://"+getActivity().getPackageName() + "/" + R.raw.dulce;
-                    Uri uri = Uri.parse(videoPath);
-                    videoView.setVideoURI(uri);
+                    playVideo(videoPath);
                 }else if (i == 6){
                     String videoPath = "android.resource://"+getActivity().getPackageName() + "/" + R.raw.aoi;
-                    Uri uri = Uri.parse(videoPath);
-                    videoView.setVideoURI(uri);
+                    playVideo(videoPath);
                 }
                 else if (i == 7){
                     String videoPath = "android.resource://"+getActivity().getPackageName() + "/" + R.raw.moverlabios;
-                    Uri uri = Uri.parse(videoPath);
-                    videoView.setVideoURI(uri);
+                    playVideo(videoPath);
                 }else if (i == 9){
                     String videoPath = "android.resource://"+getActivity().getPackageName() + "/" + R.raw.tarjeta;
-                    Uri uri = Uri.parse(videoPath);
-                    videoView.setVideoURI(uri);
+                    playVideo(videoPath);
                 }else if (i == 8){
                     String videoPath = "android.resource://"+getActivity().getPackageName() + "/" + R.raw.inflarbomba;
-                    Uri uri = Uri.parse(videoPath);
-                    videoView.setVideoURI(uri);
+                    showNegativePopup(videoPath);
                 }else if (i == 11){
                     String videoPath = "android.resource://"+getActivity().getPackageName() + "/" + R.raw.lalala;
-                    Uri uri = Uri.parse(videoPath);
-                    videoView.setVideoURI(uri);
+                    playVideo(videoPath);
                 }else if (i == 10){
                     String videoPath = "android.resource://"+getActivity().getPackageName() + "/" + R.raw.caballo;
-                    Uri uri = Uri.parse(videoPath);
-                    videoView.setVideoURI(uri);
+                    playVideo(videoPath);
                 }else if (i == 12){
                     String videoPath = "android.resource://"+getActivity().getPackageName() + "/" + R.raw.circuloconlalengua;
-                    Uri uri = Uri.parse(videoPath);
-                    videoView.setVideoURI(uri);
+                    playVideo(videoPath);
                 }else{
                     Toast.makeText(getActivity(),"Que estraño esta opción no esta :O", Toast.LENGTH_SHORT).show();
                 }
-                videoView.start();
+
             }
 
             @Override
@@ -128,71 +122,6 @@ public class AtipicaDeglucionFragment extends Fragment {
             }
         });
 
-
-        /*options.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                imageLogo.setVisibility(View.INVISIBLE);
-                videoView.setVisibility(View.VISIBLE);
-                if (i == 0){
-                    String videoPath = "android.resource://"+getActivity().getPackageName() + "/" + R.raw.masajeconmanos;
-                    Uri uri = Uri.parse(videoPath);
-                    videoView.setVideoURI(uri);
-
-
-                }else if (i == 1){
-                    String videoPath = "android.resource://"+getActivity().getPackageName() + "/" + R.raw.masajeador;
-                    Uri uri = Uri.parse(videoPath);
-                    videoView.setVideoURI(uri);
-                }else if (i == 2){
-                    String videoPath = "android.resource://"+getActivity().getPackageName() + "/" + R.raw.cepilladoconlalengua;
-                    Uri uri = Uri.parse(videoPath);
-                    videoView.setVideoURI(uri);
-
-                }else if (i == 3){
-                    String videoPath = "android.resource://"+getActivity().getPackageName() + "/" + R.raw.cauchito;
-                    Uri uri = Uri.parse(videoPath);
-                    videoView.setVideoURI(uri);
-                }else if (i == 4){
-                    String videoPath = "android.resource://"+getActivity().getPackageName() + "/" + R.raw.dulce;
-                    Uri uri = Uri.parse(videoPath);
-                    videoView.setVideoURI(uri);
-                }else if (i == 5){
-                    String videoPath = "android.resource://"+getActivity().getPackageName() + "/" + R.raw.aoi;
-                    Uri uri = Uri.parse(videoPath);
-                    videoView.setVideoURI(uri);
-                }
-                else if (i == 6){
-                    String videoPath = "android.resource://"+getActivity().getPackageName() + "/" + R.raw.moverlabios;
-                    Uri uri = Uri.parse(videoPath);
-                    videoView.setVideoURI(uri);
-                }else if (i == 8){
-                    String videoPath = "android.resource://"+getActivity().getPackageName() + "/" + R.raw.tarjeta;
-                    Uri uri = Uri.parse(videoPath);
-                    videoView.setVideoURI(uri);
-                }else if (i == 7){
-                    String videoPath = "android.resource://"+getActivity().getPackageName() + "/" + R.raw.inflarbomba;
-                    Uri uri = Uri.parse(videoPath);
-                    videoView.setVideoURI(uri);
-                }else if (i == 10){
-                    String videoPath = "android.resource://"+getActivity().getPackageName() + "/" + R.raw.lalala;
-                    Uri uri = Uri.parse(videoPath);
-                    videoView.setVideoURI(uri);
-                }else if (i == 9){
-                    String videoPath = "android.resource://"+getActivity().getPackageName() + "/" + R.raw.caballo;
-                    Uri uri = Uri.parse(videoPath);
-                    videoView.setVideoURI(uri);
-                }else if (i == 11){
-                    String videoPath = "android.resource://"+getActivity().getPackageName() + "/" + R.raw.circuloconlalengua;
-                    Uri uri = Uri.parse(videoPath);
-                    videoView.setVideoURI(uri);
-                }else{
-                    Toast.makeText(getActivity(),"Que estraño esta opción no esta :O", Toast.LENGTH_SHORT).show();
-                }
-                videoView.start();
-
-            }
-        });*/
         MediaController mediaController = new MediaController(getActivity());
         videoView.setMediaController(mediaController);
         mediaController.setAnchorView(videoView);
@@ -209,6 +138,29 @@ public class AtipicaDeglucionFragment extends Fragment {
         });
 
         return rootView;
+    }
+
+    private void playVideo(String videoPath) {
+        Uri uri = Uri.parse(videoPath);
+        videoView.setVideoURI(uri);
+        videoView.start();
+    }
+
+    private void showNegativePopup(final String videoPath) {
+        videoView.pause();
+        customDialog.setContentView(R.layout.custom_popup_negative);
+        negativePopupBtn = (Button) customDialog.findViewById(R.id.negativeContinueBtn);
+        negativePopupBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                customDialog.dismiss();
+                Uri uri = Uri.parse(videoPath);
+                videoView.setVideoURI(uri);
+                videoView.start();
+            }
+        });
+        customDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        customDialog.show();
     }
 
     private void sumarpuntos(int misPuntos, int nuevosPuntos) {

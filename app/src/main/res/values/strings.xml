@@ -44,4 +44,6 @@
     <string name="objetivos_de_atipica1">3)Corregir el hábito.</string>
     <string name="my_points">Mis puntos</string>
     <string name="reset_points">Reiniciar Puntos</string>
+    <string name="negative_popup_title_default">¡ADVERTENCIA!</string>
+    <string name="negative_popup_text_default">ES NECESARIO ESTAR EN COMPAÑÍA DE UN ADULTO, REALIZAR EN NIÑOS MAYORES A 5 AÑOS.</string>
 </resources>

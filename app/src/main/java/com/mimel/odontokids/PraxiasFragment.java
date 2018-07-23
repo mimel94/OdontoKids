@@ -1,9 +1,12 @@
 package com.mimel.odontokids;
 
 
+import android.app.Dialog;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Build;
@@ -15,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.MediaController;
@@ -38,6 +42,8 @@ public class PraxiasFragment extends Fragment {
     private Spinner options;
     private VideoView videoView;
     private ImageView imageLogo;
+    Dialog customDialog;
+    Button negativePopupBtn;
 
 
 
@@ -54,6 +60,7 @@ public class PraxiasFragment extends Fragment {
         options = (Spinner)  rootView.findViewById(R.id.listPraxias);
         videoView = (VideoView) rootView.findViewById(R.id.videoView);
         imageLogo = (ImageView) rootView.findViewById(R.id.imageView2);
+        customDialog = new Dialog(getActivity());
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(),R.array.videos_praxias, android.R.layout.simple_spinner_dropdown_item);
         options.setAdapter(adapter);
@@ -68,42 +75,27 @@ public class PraxiasFragment extends Fragment {
                     videoView.setVisibility(View.INVISIBLE);
                 }else if (i == 1){
                     String videoPath = "android.resource://"+getActivity().getPackageName() + "/" + R.raw.lapiz;
-                    Uri uri = Uri.parse(videoPath);
-                    videoView.setVideoURI(uri);
-
-
+                    playVideo(videoPath);
                 }else if (i == 2){
                     String videoPath = "android.resource://"+getActivity().getPackageName() + "/" + R.raw.arequipe;
-                    Uri uri = Uri.parse(videoPath);
-                    videoView.setVideoURI(uri);
-
+                    playVideo(videoPath);
                 }else if (i == 3){
                     String videoPath = "android.resource://"+getActivity().getPackageName() + "/" + R.raw.frootloops;
-                    Uri uri = Uri.parse(videoPath);
-                    videoView.setVideoURI(uri);
-
+                    playVideo(videoPath);
                 }
                 else if (i == 4){
                     String videoPath = "android.resource://"+getActivity().getPackageName() + "/" + R.raw.cuchara;
-                    Uri uri = Uri.parse(videoPath);
-                    videoView.setVideoURI(uri);
-
+                    playVideo(videoPath);
                 }else if (i == 5){
                     String videoPath = "android.resource://"+getActivity().getPackageName() + "/" + R.raw.pitillo;
-                    Uri uri = Uri.parse(videoPath);
-                    videoView.setVideoURI(uri);
-
+                    playVideo(videoPath);
                 }else if (i == 6) {
                     String videoPath = "android.resource://" + getActivity().getPackageName() + "/" + R.raw.boton;
-                    Uri uri = Uri.parse(videoPath);
-                    videoView.setVideoURI(uri);
-
+                    showNegativePopup(videoPath);
                 }
                 else{
                     Toast.makeText(getActivity(),"Que estraño esta opción no esta :O", Toast.LENGTH_SHORT).show();
                 }
-                videoView.start();
-
             }
 
             @Override
@@ -133,6 +125,29 @@ public class PraxiasFragment extends Fragment {
 
 
 
+    }
+
+    private void showNegativePopup(final String videoPath) {
+        videoView.pause();
+        customDialog.setContentView(R.layout.custom_popup_negative);
+        negativePopupBtn = (Button) customDialog.findViewById(R.id.negativeContinueBtn);
+        negativePopupBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                customDialog.dismiss();
+                Uri uri = Uri.parse(videoPath);
+                videoView.setVideoURI(uri);
+                videoView.start();
+            }
+        });
+        customDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        customDialog.show();
+    }
+
+    private void playVideo(String videoPath) {
+        Uri uri = Uri.parse(videoPath);
+        videoView.setVideoURI(uri);
+        videoView.start();
     }
 
     public int consultarPuntos() {
